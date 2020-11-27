@@ -1,7 +1,7 @@
 """Test suite for textstat
 """
 
-import textstat
+import docassemble_textstat.textstat as textstat
 
 short_test = "Cool dogs wear da sunglasses."
 

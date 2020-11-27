@@ -1,5 +1,8 @@
 # Textstat
 
+**Modified from the original by Jonathan Pyle to remove the Pyphen
+dependency because it is a GPL library and textstat is MIT licensed.**
+
 [![PyPI](https://img.shields.io/pypi/v/textstat.svg)](https://pypi.org/project/textstat/)
 [![Build Status](https://travis-ci.com/shivam5992/textstat.svg?branch=master)](https://travis-ci.com/shivam5992/textstat)
 [![Downloads](https://img.shields.io/badge/dynamic/json.svg?url=https://pypistats.org/api/packages/textstat/recent?mirrors=false&label=downloads&query=$.data.last_month&suffix=/month)](https://pypistats.org/packages/textstat)

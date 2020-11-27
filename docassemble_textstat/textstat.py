@@ -5,8 +5,8 @@ import math
 from collections import Counter
 import pkg_resources
 from functools import lru_cache
-from pyphen import Pyphen
-
+#from pyphen import Pyphen
+from hyphenate import hyphenate_word
 
 langs = {
     "en": {  # Default config
@@ -146,11 +146,12 @@ class textstatistics:
         if not text:
             return 0
 
-        dic = Pyphen(lang=self.__lang)
+        #dic = Pyphen(lang=self.__lang)
         count = 0
         for word in text.split(' '):
-            word_hyphenated = dic.inserted(word)
-            count += max(1, word_hyphenated.count("-") + 1)
+            count += len(hyphenate_word(word))
+        #    word_hyphenated = dic.inserted(word)
+        #    count += max(1, word_hyphenated.count("-") + 1)
         return count
 
     @lru_cache(maxsize=128)
@@ -618,20 +619,15 @@ class textstatistics:
             easy_word_set = {
                 ln.decode("utf-8").strip()
                 for ln in pkg_resources.resource_stream(
-                    "textstat",
+                    "docassemble_textstat",
                     f"resources/{self.__get_lang_root()}/easy_words.txt",
                 )
             }
         except FileNotFoundError:
-            warnings.warn(
-                "There is no easy words vocabulary for "
-                f"{self.__lang}, using english.",
-                Warning,
-            )
             easy_word_set = {
                 ln.decode("utf-8").strip()
                 for ln in pkg_resources.resource_stream(
-                    "textstat", "resources/en/easy_words.txt"
+                    "docassemble_textstat", "resources/en/easy_words.txt"
                 )
             }
         return easy_word_set

@@ -1,9 +1,10 @@
 from setuptools import setup
 from io import open
+import os
 
 setup(
-    name='textstat',
-    packages=['textstat'],
+    name='docassemble-textstat',
+    packages=['docassemble_textstat'],
     version='0.7.0',
     description='Calculate statistical features from text',
     author='Shivam Bansal, Chaitanya Aggarwal',
@@ -11,11 +12,11 @@ setup(
     url='https://github.com/shivam5992/textstat',
     long_description=open('README.md', encoding='utf-8').read(),
     long_description_content_type='text/markdown',
-    package_data={'': ['easy_word_list']},
-    include_package_data=True,
-    install_requires=['pyphen'],
+    package_data={'': [os.path.join('resources', 'en', '*.*'), os.path.join('resources', 'es', '*.*')]},
+    install_requires=['hyphenate'],
     license='MIT',
     python_requires=">=3.6",
+    zip_safe = False,
     classifiers=(
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
